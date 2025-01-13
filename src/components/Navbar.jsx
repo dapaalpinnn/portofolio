@@ -1,42 +1,43 @@
+import logoImage from "../assets/holding-hand.svg";
+import NavItems from "./atoms/NavItems";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import logoImage from "../assets/holding-hand.svg";
+import { navItems } from "../utils/navigationItems";
+import { transitions } from "../utils/motionVariants";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="flex items-center absolute top-0 w-full text-md font-medium p-6 justify-between text-slate-300 sm:text-lg sm:p-8">
-      <img src={logoImage} alt="Logo" className="w-10" />
-      <div className="sm:hidden">
+    <nav className="flex items-center absolute top-0 w-full text-md font-medium p-6 justify-between text-slate-300 sm:text-lg sm:p-10">
+      <img src={logoImage} alt="Logo" className="w-10 sm:w-12" />
+      <div>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-slate-300 text-2xl focus:outline-none"
+          className="text-slate-300 text-4xl focus:outline-none sm:pr-6"
         >
           {isMenuOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* Menu Items */}
       <div
+        style={{ height: "calc(100vh - 64px)" }}
         className={`${
           isMenuOpen ? "block" : "hidden"
-        } absolute top-16 left-0 w-full bg-slate-900 bg-blur-3xl sm:bg-transparent sm:static sm:flex sm:gap-8 sm:items-center sm:justify-end`}
+        } absolute top-16 z-10 left-0 py-8 w-screen h-screen bg-opacity-60 bg-transparent backdrop-blur-xl sm:mt-6 sm:h-screen`}
       >
-        <div className="flex flex-col gap-6 p-4 sm:flex-row sm:p-0 sm:gap-8">
-          <a href="#" className="hover:text-white">
-            Manfaat
-          </a>
-          <a href="#" className="hover:text-white">
-            Solusi
-          </a>
+        <div className="flex flex-col gap-6 p-4">
+          {navItems.map((item) => (
+            <NavItems
+              key={item.id}
+              href={item.link}
+              transition={transitions.medium}
+              className="text-2xl tracking-tight font-medium pl-8"
+            >
+              {item.label}
+            </NavItems>
+          ))}
         </div>
-        <a
-          href="#"
-          className="block px-4 py-2 mt-2 text-center rounded-full border border-slate-300 sm:mt-0 sm:text-base sm:border-none sm:bg-transparent sm:hover:text-white"
-        >
-          Tentang Kami
-        </a>
       </div>
     </nav>
   );
