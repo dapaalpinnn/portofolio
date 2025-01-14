@@ -13,7 +13,7 @@ export const navItems = [
   },
   {
     id: 3,
-    label: "Services",
+    label: "Projects",
     link: "#",
     transition: "long",
   },
@@ -33,8 +33,7 @@ export const navItemVariants = {
     transition: { duration: 0.2, ease: "easeInOut" },
   },
   hover: {
-    scale: 1.05,
-    color: "#FFD700",
+    color: "#00FF9C",
     transition: { duration: 0.3 },
   },
 };

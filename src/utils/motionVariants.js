@@ -8,3 +8,15 @@ export const transitions = {
   medium: { duration: 1, ease: "easeOut" },
   long: { duration: 1.5, ease: "easeOut" },
 };
+
+export const imgTransitions = {
+  animate: {
+    rotate: [-20, 0, -20, 0, -20, 0, -20],
+  },
+  waved: {
+    duration: 1.5,
+    repeat: Infinity,
+    repeatDelay: 2,
+    ease: "easeInOut",
+  },
+};

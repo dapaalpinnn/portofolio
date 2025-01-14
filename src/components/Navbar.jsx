@@ -1,4 +1,3 @@
-import logoImage from "../assets/holding-hand.svg";
 import NavItems from "./atoms/NavItems";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -8,31 +7,38 @@ import { transitions } from "../utils/motionVariants";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  if (!isMenuOpen) {
+    document.body.style.overflow = "auto";
+  } else {
+    document.body.style.overflow = "hidden";
+  }
+
   return (
-    <nav className="flex items-center absolute top-0 w-full text-md font-medium p-6 justify-between text-slate-300 sm:text-lg sm:p-10">
-      <img src={logoImage} alt="Logo" className="w-10 sm:w-12" />
+    <nav className="flex items-center justify-between relative w-full text-md font-medium p-6 text-slate-300 sm:text-lg sm:p-4">
+      <a href="#" className="font-semibold">
+        Portofolio
+      </a>
       <div>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-slate-300 text-4xl focus:outline-none sm:pr-6"
+          className="text-slate-300 text-2xl sm:pr-4"
         >
           {isMenuOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
       <div
-        style={{ height: "calc(100vh - 64px)" }}
         className={`${
           isMenuOpen ? "block" : "hidden"
-        } absolute top-16 z-10 left-0 py-8 w-screen h-screen bg-opacity-60 bg-transparent backdrop-blur-xl sm:mt-6 sm:h-screen`}
+        } absolute top-16 left-0 py-8 w-full h-screen bg-opacity-60 backdrop-blur-xl sm:mt-6 sm:h-screen`}
       >
-        <div className="flex flex-col gap-6 p-4">
+        <div className="flex w-full flex-col gap-6 pt-8">
           {navItems.map((item) => (
             <NavItems
               key={item.id}
               href={item.link}
               transition={transitions.medium}
-              className="text-2xl tracking-tight font-medium pl-8"
+              className="text-3xl tracking-tight w-full font-medium pl-4"
             >
               {item.label}
             </NavItems>
