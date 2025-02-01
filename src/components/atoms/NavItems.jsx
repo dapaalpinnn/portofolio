@@ -1,14 +1,10 @@
 import { motion } from "motion/react";
-import { variants } from "../../utils/motionVariants";
 import { navItemVariants } from "../../utils/navigationItems";
 
-export default function NavItems({ children, className, href, transition }) {
+export default function NavItems({ children, className, href }) {
   return (
     <motion.a
-      initial={variants.hidden}
-      animate={variants.visible}
       className={className}
-      transition={transition}
       whileHover={navItemVariants.hover}
       href={href}
     >

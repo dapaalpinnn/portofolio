@@ -30,10 +30,11 @@ export const navItemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.2, ease: "easeInOut" },
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
   hover: {
     color: "#00FF9C",
-    transition: { duration: 0.3 },
+    x: 20,
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };

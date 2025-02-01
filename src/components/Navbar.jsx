@@ -16,27 +16,25 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`flex items-center justify-between relative w-full text-md font-medium p-6 text-slate-300 sm:text-lg sm:p-4`}
+      className={`flex items-center justify-between relative w-full text-md font-medium p-6 text-slate-300 sm:text-lg sm:p-6`}
     >
-      <a href="#" className="ocument.body.">
+      <a href="#" className="z-10">
         Portofolio
       </a>
-      <div>
-        <motion.button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-slate-300 text-2xl sm:pr-4"
-          transition={transitions.short}
-        >
-          {isMenuOpen ? <FiX /> : <FiMenu />}
-        </motion.button>
-      </div>
+      <motion.button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="text-slate-300 text-xl sm:pr-4 z-10"
+        transition={transitions.short}
+      >
+        {isMenuOpen ? <FiX /> : <FiMenu />}
+      </motion.button>
 
       <div
         className={`${
           isMenuOpen ? "block" : "hidden"
-        } absolute top-16 left-0 py-8 w-full h-screen bg-opacity-60 backdrop-blur-xl  sm:h-screen`}
+        } absolute top-0 left-0 py-8 w-full h-screen bg-opacity-60 backdrop-blur-xl  sm:h-screen`}
       >
-        <div className="flex w-full flex-col gap-6 pt-8">
+        <div className="flex w-full flex-col gap-6 pt-20 px-2">
           {navItems.map((item) => (
             <NavItems
               key={item.id}

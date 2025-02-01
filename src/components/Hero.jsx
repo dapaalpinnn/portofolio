@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { transitions, variants } from "../utils/motionVariants";
+import CardProject from "./CardProject";
 import Button from "./atoms/Button";
 import GreetingMessage from "./molecules/GreetingMessage";
 import projectImage from "../assets/project.webp";
@@ -9,7 +10,7 @@ function Hero() {
     <>
       <div className="gradient-effect"></div>
       <motion.div
-        className="max-w-md mx-auto mt-10 text-center sm:max-w-xl"
+        className="max-w-sm p-4 mx-auto mt-10 text-center sm:max-w-xl"
         animate={variants.visible}
         initial={variants.hidden}
         transition={transitions.long}
@@ -25,7 +26,7 @@ function Hero() {
             applications. Expertise in frontend development and UI/UX design💻.
           </p>
         </div>
-        <div className="flex gap-4 justify-center mx-auto mt-4 sm:mt-8">
+        <div className="flex gap-4 justify-center mx-auto mt-6 sm:mt-8">
           <Button
             onClick={() => window.scrollTo(0, document.body.scrollHeight)}
             color="bg-green-500"
@@ -43,12 +44,22 @@ function Hero() {
         <img
           src={projectImage}
           alt="cat"
-          className="w-full mt-32 h-96 sm:h-3/5 object-cover"
+          className="w-full mt-32 sm:h-3/5 object-cover"
         />
-        <div className="max-w-md mx-auto sm:max-w-lg">
-          <p className="text-center text-slate-400 mt-8 tracking-tight leading-tight">
-            Expertise in creating beautiful and intuitive user interfaces using:
+      </div>
+      <div className="max-w-sm p-4 mt-8 mx-auto sm:max-w-xl relative">
+        <div>
+          <h1 className="text-slate-300 text-4xl mt-4 font-medium tracking-tight">
+            Recent <span className="text-green-500">Projects</span>
+          </h1>
+          <p className="text-slate-400 mt-2 text-sm tracking-tight leading-tight">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt,
+            assumenda.
           </p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 mt-4 sm:max-w-xl">
+          <CardProject />
+          <CardProject />
         </div>
       </div>
     </>
